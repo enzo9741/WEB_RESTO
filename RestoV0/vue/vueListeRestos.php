@@ -11,10 +11,10 @@ for ($i = 0; $i < count($lesRestos); $i++) {
         <div class="descrCard"><?php echo "<a href='./?action=detail&idR=" . $lesRestos[$i]['idR'] . "'>" . $lesRestos[$i]['nomR'] . "</a>"; ?>
             <br />
             <?= $lesRestos[$i]["numAdrR"] ?>
-            <?= $lesRestos[$i]["villeR"] ?>
-            <br />
-            <?= $lesRestos[$i]["cpR"] ?>
             <?= $lesRestos[$i]["voieAdrR"] ?>
+            <br />
+            <?= $lesRestos[$i]["cpR"]?>
+            <?= $lesRestos[$i]["villeR"] ?>
         </div>
         <div class="tagCard">
             <ul id="tagFood">		
