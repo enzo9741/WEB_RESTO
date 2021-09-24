@@ -1,7 +1,9 @@
 <?php
 
 include_once "$racine/modele/bd.resto.inc.php";
-
+include_once "$racine/modele/bd.proposer.inc.php";
+include_once "$racine/modele/bd.typecuisine.inc.php";
+include_once "$racine/modele/bd.photo.inc.php";
 // creation du menu burger
 $menuBurger = array();
 $menuBurger[] = Array("url"=>"#top","label"=>"Le restaurant");
@@ -14,9 +16,15 @@ $idR = $_GET["idR"];
 
 // appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
 $unResto = getRestoByIdR($idR);
+$proposer = getProposerByIdR($idR);
+$photos = getPhotosByIdR($idR);
 
 // traitement si necessaire des donnees recuperees
-;
+$typeCuisine = Array();
+
+for ($i = 0; $i < count($proposer); $i++) {
+    $typeCuisine[] = getTypeCuisineByIdTC($proposer[$i]['idTC']);
+}
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "detail d'un restaurant";
