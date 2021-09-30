@@ -39,7 +39,7 @@
     for ($i = 0; $i < count($photos); $i++) {
         ?>
 
-        <?= "<li><img src=$racine/photos/".$photos[$i]['cheminP']."></li>";?>
+        <?= "<li><img src=./photos/".$photos[$i]['cheminP']."></li>";?>
 
         <?php
     }
