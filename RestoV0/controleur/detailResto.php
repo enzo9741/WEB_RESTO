@@ -4,6 +4,8 @@ include_once "$racine/modele/bd.resto.inc.php";
 include_once "$racine/modele/bd.proposer.inc.php";
 include_once "$racine/modele/bd.typecuisine.inc.php";
 include_once "$racine/modele/bd.photo.inc.php";
+include_once "$racine/modele/bd.critique.inc.php";
+
 // creation du menu burger
 $menuBurger = array();
 $menuBurger[] = Array("url"=>"#top","label"=>"Le restaurant");
@@ -18,6 +20,7 @@ $idR = $_GET["idR"];
 $unResto = getRestoByIdR($idR);
 $proposer = getProposerByIdR($idR);
 $photos = getPhotosByIdR($idR);
+$critiques = getCritiqueByIdR($idR);
 
 // traitement si necessaire des donnees recuperees
 $typeCuisine = Array();

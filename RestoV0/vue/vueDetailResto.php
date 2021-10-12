@@ -8,9 +8,7 @@
     for ($i = 0; $i < count($typeCuisine); $i++) {
         ?>
 
-        <?= " <li class='tag'><span class='tag'>#</span>".$typeCuisine[$i]['libelleTC']."</li>";?>
-
-        <?php
+        <?= " <li class='tag'><span class='tag'>#</span>".$typeCuisine[$i]['libelleTC']."</li>";
     }
     ?>
 </section>
@@ -51,5 +49,17 @@
 </h2> 
 <?= $unResto['horairesR']; ?>
 
+<h2 id="critiques">
+    Critiques
+</h2>
 
+<ul id="critiques">
+<?php
+for ($i = 0; $i < count($critiques ); $i++) {
+    ?>
+
+    <?= "<li>".$critiques [$i]['pseudoU']."<br>".$critiques [$i]['note']."/5 ".$critiques [$i]['commentaire']."</li>";
+}
+?>
+</ul>
 

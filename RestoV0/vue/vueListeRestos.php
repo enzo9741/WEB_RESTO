@@ -3,6 +3,7 @@
 
 <?php
 for ($i = 0; $i < count($lesRestos); $i++) {
+
     ?>
 
     <div class="card">
