@@ -24,10 +24,18 @@ $critiques = getCritiqueByIdR($idR);
 
 // traitement si necessaire des donnees recuperees
 $typeCuisine = Array();
+$note = 0;
 
 for ($i = 0; $i < count($proposer); $i++) {
     $typeCuisine[] = getTypeCuisineByIdTC($proposer[$i]['idTC']);
 }
+
+for ($i = 0; $i < count($critiques); $i++) {
+    $note += $critiques[$i]['note'];
+}
+$moyenne = $note / count($critiques);
+$like = round($moyenne);
+$dislike = 5 - $like;
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "detail d'un restaurant";

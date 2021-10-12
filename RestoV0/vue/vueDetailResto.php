@@ -1,7 +1,23 @@
 
 <h1><?= $unResto['nomR']; ?></h1>
 
-<span id="note"></span>
+<span id="note">
+        <?php
+        for ($i = 0; $i < $like; $i++) {
+            ?>
+
+            <?= "<img src=\"./images/like.png\">";
+        }
+
+        for ($i = 0; $i < $dislike; $i++) {
+            ?>
+
+            <?= "<img src=\"./images/neutre.png\">";
+        }
+
+        ?>
+
+</span>
 <section>
     Cuisine <br />
     <?php
@@ -54,12 +70,13 @@
 </h2>
 
 <ul id="critiques">
-<?php
-for ($i = 0; $i < count($critiques ); $i++) {
-    ?>
+    <?php
+        for ($i = 0; $i < count($critiques ); $i++) {
+            ?>
 
-    <?= "<li>".$critiques [$i]['pseudoU']."<br>".$critiques [$i]['note']."/5 ".$critiques [$i]['commentaire']."</li>";
-}
-?>
+        <?= "<li>".$critiques [$i]['pseudoU']."<br>".$critiques [$i]['note']."/5 ".$critiques [$i]['commentaire']."</li>";
+
+    }
+    ?>
 </ul>
 
