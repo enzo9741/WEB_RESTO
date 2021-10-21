@@ -1,7 +1,6 @@
 <?php
 
 include_once "$racine/modele/bd.resto.inc.php";
-include_once "$racine/modele/bd.proposer.inc.php";
 include_once "$racine/modele/bd.typecuisine.inc.php";
 include_once "$racine/modele/bd.photo.inc.php";
 include_once "$racine/modele/bd.critique.inc.php";
@@ -18,22 +17,22 @@ $idR = $_GET["idR"];
 
 // appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
 $unResto = getRestoByIdR($idR);
-$proposer = getProposerByIdR($idR);
 $photos = getPhotosByIdR($idR);
 $critiques = getCritiqueByIdR($idR);
+$cuisine = getTypeCuisineByIdR($idR);
 
 // traitement si necessaire des donnees recuperees
-$typeCuisine = Array();
 $note = 0;
-
-for ($i = 0; $i < count($proposer); $i++) {
-    $typeCuisine[] = getTypeCuisineByIdTC($proposer[$i]['idTC']);
-}
-
+$moyenne = 0;
 for ($i = 0; $i < count($critiques); $i++) {
     $note += $critiques[$i]['note'];
 }
-$moyenne = $note / count($critiques);
+if(count($critiques) > 0)
+{
+    $moyenne = $note / count($critiques);
+}
+
+
 $like = round($moyenne);
 $dislike = 5 - $like;
 

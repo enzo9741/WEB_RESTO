@@ -19,4 +19,21 @@ function getCritiqueByIdR($idR) {
     }
     return $resultat;
 }
+
+function getCritique() {
+    $resultat = array();
+
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("select note, idR from critiquer ORDER BY idR ASC");
+        $req->execute();
+
+        $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
 ?>

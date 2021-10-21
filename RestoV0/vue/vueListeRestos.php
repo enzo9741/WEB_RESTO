@@ -1,19 +1,12 @@
-
 <h1>Liste des restaurants</h1>
-
 <?php
 for ($i = 0; $i < count($lesRestos); $i++) {
-
     ?>
-
     <div class="card">
         <div class="photoCard">
-            <?php
-            $photos = getPhotosByIdR($i+1);
-            ?>
-            <?= "<img src=./photos/".$photos[0]['cheminP'].">";?>
+            <?= "<img src=./photos/".$lesPhotos[$i+1].">";?>
         </div>
-        <div class="descrCard"><?php echo "<a href='./?action=detail&idR=" . $lesRestos[$i]['idR'] . "'>" . $lesRestos[$i]['nomR'] . "</a>"; ?>
+        <div class="descrCard"><?= "<a href='./?action=detail&idR=" . $lesRestos[$i]['idR'] . "'>" . $lesRestos[$i]['nomR'] . "</a>"; ?>
             <br />
             <?= $lesRestos[$i]["numAdrR"] ?>
             <?= $lesRestos[$i]["voieAdrR"] ?>
@@ -24,17 +17,10 @@ for ($i = 0; $i < count($lesRestos); $i++) {
         <div class="tagCard">
             <ul id="tagFood">
                 <?php
-                $typeCuisine = Array();
-                $proposer = getProposerByIdR($i+1);
-                for ($j = 0; $j < count($proposer); $j++) {
-                    $typeCuisine[] = getTypeCuisineByIdTC($proposer[$j]['idTC']);
-                }
-                for ($k = 0; $k < count($typeCuisine); $k++) {
-                    ?>
-
-                    <?= " <li class='tag'><span class='tag'>#</span>".$typeCuisine[$k]['libelleTC']."</li>";?>
-
-                    <?php
+                for ($j = 0; $j < count($typecuisine); $j++) {
+                    if($typecuisine[$j]['idR'] == $i+1){
+                        echo(" <li class='tag'><span class='tag'>#</span>" . $typecuisine[$j]['libelleTC'] . "</li>");
+                    }
                 }
                 ?>
             </ul>
